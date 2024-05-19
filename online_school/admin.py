@@ -7,10 +7,10 @@ class CourseAdmin(admin.ModelAdmin):
     list_display = ('pk', 'name',)
     list_filter = ('name',)
     search_fields = ('name',)
+    list_display = ('name',)
 
 
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'course',)
-    list_filter = ('course',)
-    search_fields = ('course',)
+    list_display = ('name', 'course', 'video_link',)
+    search_fields = ('name',)
