@@ -4,13 +4,10 @@ from online_school.models import Course, Lesson
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name',)
-    list_filter = ('name',)
-    search_fields = ('name',)
-    list_display = ('name',)
+    list_display = ('name', 'owner',)
 
 
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
-    list_display = ('name', 'course', 'video_link',)
+    list_display = ('name', 'course', 'owner',)
     search_fields = ('name',)

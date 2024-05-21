@@ -1,0 +1,78 @@
+1. Создать курс
+POST запрос: http://localhost:8000/courses/
+{
+    "name":"Джанго"
+}
+2. Вывести список курсов
+GET запрос: http://localhost:8000/courses/
+
+3. Редактировать курс из имеющихся по РК
+PATCH запрос: http://localhost:8000/courses/1/
+
+4. Удалить выбранный по РК курс
+DELETE запрос: http://localhost:8000/courses/4/
+
+
+1. Создать урок, курс вводим по РК
+POST запрос: http://localhost:8000/lesson/create/
+{
+    "name":"Вьюсеты",
+    "course":3
+}
+2. Вывести список уроков
+GET запрос: http://localhost:8000/lesson/
+
+3. Редактировать урок из имеющихся по РК
+PATCH запрос: http://localhost:8000/lesson/update/1/
+
+4. Удалить выбранный по РК урок
+DELETE запрос: http://localhost:8000/lesson/delete/4/
+
+5. Создать пользователя
+POST запрос: http://localhost:8000/users/token/
+{
+    "username":"updatetest",
+    "password":"..."
+}
+
+6. Фильтровать список платежей по дате (в обратном порядке -payment_date)
+GET запрос: http://localhost:8000/user/payments/?ordering=payment_date
+
+7. Фильтровать по способу оплаты (наличные cash)
+GET запрос: http://localhost:8000/user/payments/?payment_method=transfer
+
+8. Фильтровать по курсу или уроку (обязательно указываем pk курса или урока!)
+GET запрос: http://localhost:8000/user/payments/?course_paid=5
+
+9. Создать нового пользователя
+POST запрос: http://localhost:8000/user/register/
+{
+"email":"user@test.ru",
+"password":"QWErty111"
+}
+
+10. Получить токен пользователя
+POST запрос: http://localhost:8000/user/token/
+{
+"email":"user@test.ru",
+"password":"QWErty111"
+}
+
+11. Просмотреть список уроков: (POST запрос: http://localhost:8000/user/token/)
+* создали пользователя "email":"user@test.ru"
+* получили его токен POST запрос: http://localhost:8000/user/token/
+* в Админке дали этому пользователю права Модератора
+* Ввели токен пользователя в Headers для вывода списка уроков
+
+12. Суперюзер с правами модератора:
+* получили его токен POST запрос: http://localhost:8000/user/token/
+* Ввели токен пользователя в Headers для обозначения авторизации
+* Вывести список уроков GET запрос: http://localhost:8000/lesson/
+* Редактировать урок PATCH запрос: http://localhost:8000/lesson/update/10/
+* Удалить урок DELETE запрос: http://localhost:8000/lesson/delete/10/
+!!! ПО КУРСАМ, Т.К. ЭТО ВЬЮСЕТЫ, ТО МЫ НЕ УКАЗЫВАЕМ В ПУТИ CRUD!!!
+Т.е., пусть всегда один и тот же http://localhost:8000/courses/ меняем только pk нужного нам курса
+и САМ МЕТОД ЗАПРОСА!!! GET/PATCH/DELETE/
+* Вывести список курсов GET запрос: http://localhost:8000/courses/
+* Редактировать курс PATCH запрос: http://localhost:8000/courses/2/
+* Удалить курс DELETE запрос: http://localhost:8000/courses/2/
